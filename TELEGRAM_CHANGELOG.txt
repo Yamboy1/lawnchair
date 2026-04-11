@@ -1,10 +1,20 @@
-*Lawnchair 15 Beta 1 is here!*
+Lawnchair 15 Beta 3 is here!
 
-We're excited to release the first beta for Lawnchair 15, a foundational update based on Android 15.
+As many of you know, the Android launcher landscape is changing rapidly over the past few months. To welcome users looking for a new, open-source home, this release now <b>supports importing backups from Nova Launcher</b>!
 
-The biggest new feature is one of our most requested ever: **App Drawer Folders**. You can now create and reorder custom folders to finally organize your app drawer.
+What it imports
+• Home screen and dock grid layout
+• Widgets and folders
+• Selected icon pack
 
-This release is packed with many other improvements, from a more powerful dock to dozens of UI refinements.
+How to use it
+1. Open Lawnchair Settings
+2. Tap the three dots (⋮) in the top right corner
+3. Select "Restore Nova backup" and choose your file
 
-**Read the full announcement on our blog:**
-https://lawnchair.app/blog/lawnchair-15-beta-1
+<b>Note:</b> Other Nova features not mentioned (like app drawer categories and icon swipe gestures) are not yet supported and won't be imported. You may need to do a little manual tweaking after the import.
+
+While this is a major milestone for Lawnchair 15, our team is still working hard to improve and polish the Lawnchair 16 experience. Stay tuned for updates!
+
+<a href="https://opencollective.com/lawnchair">Donate on Open Collective</a> &bull;
+<a href="https://github.com/LawnchairLauncher/lawnchair/releases/tag/v15.0.0-beta3">View full changelog on GitHub</a>

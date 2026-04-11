@@ -102,7 +102,7 @@ object ColorTokens {
 
     @JvmField val DotColor = Accent3_200
 
-    @JvmField val FolderBackgroundColor = DayNightColorToken(Neutral1_50.setLStar(98.0), Neutral2_50.setLStar(30.0))
+    @JvmField val FolderBackgroundColor = DayNightColorToken(Neutral1_50.setLStar(94.0), Neutral2_50.setLStar(30.0))
 
     @JvmField val FolderIconBorderColor = ColorPrimary
 
@@ -154,6 +154,8 @@ object ColorTokens {
 
     val SwitchTrackOn = DayNightColorToken(Accent1_600, Accent2_500.setLStar(51.0))
     val SwitchTrackOff = DayNightColorToken(Neutral2_500.setLStar(45.0), Neutral1_700)
+
+    @JvmField val PredictedPlateColor = Accent1_300
 }
 
 @Composable

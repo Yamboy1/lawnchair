@@ -15,7 +15,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Backup
+import androidx.compose.material.icons.outlined.Science
+import androidx.compose.material.icons.outlined.SettingsBackupRestore
+import androidx.compose.material.icons.rounded.Backup
 import androidx.compose.material.icons.rounded.Build
+import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material.icons.rounded.Science
+import androidx.compose.material.icons.rounded.SettingsBackupRestore
 import androidx.compose.material.icons.rounded.TipsAndUpdates
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -28,12 +35,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.getSystemService
 import app.lawnchair.LawnchairApp
 import app.lawnchair.LawnchairLauncher
 import app.lawnchair.backup.ui.restoreBackupOpener
+import app.lawnchair.backup.ui.restoreNovaBackupOpener
 import app.lawnchair.preferences.getAdapter
 import app.lawnchair.preferences.observeAsState
 import app.lawnchair.preferences.preferenceManager
@@ -236,6 +245,7 @@ fun RowScope.PreferencesOverflowMenu(
     val navController = LocalNavController.current
     val openCreateBackup = { navController.navigate(CreateBackup) }
     val openRestoreBackup = restoreBackupOpener()
+    val openRestoreNovaBackup = restoreNovaBackupOpener()
     OverflowMenu(
         modifier = modifier.addIf(
             listOf(ExperimentalFeatures).any {
@@ -248,37 +258,103 @@ fun RowScope.PreferencesOverflowMenu(
         },
     ) {
         val context = LocalContext.current
-        DropdownMenuItem(onClick = {
-            openAppInfo(context)
-            hideMenu()
-        }, text = {
-            Text(text = stringResource(id = R.string.app_info_drop_target_label))
-        })
-        DropdownMenuItem(onClick = {
-            restartLauncher(context)
-            hideMenu()
-        }, text = {
-            Text(text = stringResource(id = R.string.debug_restart_launcher))
-        })
-        DropdownMenuItem(onClick = {
-            onNavigate(ExperimentalFeatures)
-            hideMenu()
-        }, text = {
-            Text(text = stringResource(id = R.string.experimental_features_label))
-        })
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    painter = painterResource(R.drawable.ic_about),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            },
+            onClick = {
+                openAppInfo(context)
+                hideMenu()
+            },
+            text = {
+                Text(text = stringResource(id = R.string.app_info_drop_target_label))
+            },
+        )
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.Refresh,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            },
+            onClick = {
+                restartLauncher(context)
+                hideMenu()
+            },
+            text = {
+                Text(text = stringResource(id = R.string.debug_restart_launcher))
+            },
+        )
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Outlined.Science,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            },
+            onClick = {
+                onNavigate(ExperimentalFeatures)
+                hideMenu()
+            },
+            text = {
+                Text(text = stringResource(id = R.string.experimental_features_label))
+            },
+        )
         PreferenceDivider(modifier = Modifier.padding(vertical = 8.dp))
-        DropdownMenuItem(onClick = {
-            openCreateBackup()
-            hideMenu()
-        }, text = {
-            Text(text = stringResource(id = R.string.create_backup))
-        })
-        DropdownMenuItem(onClick = {
-            openRestoreBackup()
-            hideMenu()
-        }, text = {
-            Text(text = stringResource(id = R.string.restore_backup))
-        })
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Outlined.Backup,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            },
+            onClick = {
+                openCreateBackup()
+                hideMenu()
+            },
+            text = {
+                Text(text = stringResource(id = R.string.create_backup))
+            },
+        )
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.SettingsBackupRestore,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            },
+            onClick = {
+                openRestoreBackup()
+                hideMenu()
+            },
+            text = {
+                Text(text = stringResource(id = R.string.restore_backup))
+            },
+        )
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.SettingsBackupRestore,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            },
+            onClick = {
+                openRestoreNovaBackup()
+                hideMenu()
+            },
+            text = {
+                Text(text = stringResource(id = R.string.restore_nova_backup))
+            },
+        )
     }
 }
 
